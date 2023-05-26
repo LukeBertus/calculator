@@ -14,6 +14,7 @@ html {
     border: 3px black solid;
     border-radius: 10% / 7%;
     margin: 10px auto;
+    background-color: rgb(229, 229, 229);
 }
 
 #title{
@@ -27,6 +28,7 @@ html {
     border-radius: 5% / 16%;
     height: 20%;
     margin: 5%;
+    background-color: white;
 }
 
 .row {
@@ -47,4 +49,18 @@ html {
     justify-content: center;
     /*font-size: 2rem;*/
     font-family :Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.numbers {
+    background-color: rgb(21, 21, 21);
+    color: white;
+}
+
+.operators {
+    background-color: rgb(248, 114, 4);
+}
+
+#ac,
+#equals{
+    background-color: rgb(35, 107, 214);
 }
