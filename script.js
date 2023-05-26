@@ -28,12 +28,14 @@ const nine = document.querySelector("#nine");
 //#region aspect ratios
 //sets calculator to 7:10 ratio
 const  calculatorHeight = calculator.offsetHeight;
-calculator.style.cssText = `width: ${0.6*calculatorHeight}px`;
+calculator.style.cssText = `width: ${0.61*calculatorHeight}px`;
 
 //uses height of button seven to set the font to half the button container
 const buttonHeight = seven.offsetHeight;
 buttons.forEach(e => e.style.fontSize = `${buttonHeight/2}px`);
 //#endregion
+
+title.style.cssText = `margin: ${0.02*calculatorHeight}px; font-size: ${0.1*calculatorHeight}px`;
 
 // #region Computations
 add = (a, b) => {return(a+b)};
