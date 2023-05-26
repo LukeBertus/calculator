@@ -40,5 +40,8 @@ add = (a, b) => {return(a+b)};
 subtract = (a, b) => {return(a-b)};
 multiply = (a, b) => {return(a*b)};
 divide = (a, b) => {return(a/b)};
+squareroot = (a) => {return(Math.sqrt(a))};
+power = (a, b) => {return(a**b)};
 // #endregion
 
+console.log(power(10,3))
