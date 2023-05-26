@@ -28,7 +28,7 @@ const nine = document.querySelector("#nine");
 //#region aspect ratios
 //sets calculator to 7:10 ratio
 const  calculatorHeight = calculator.offsetHeight;
-calculator.style.cssText = `width: ${0.7*calculatorHeight}px`;
+calculator.style.cssText = `width: ${0.6*calculatorHeight}px`;
 
 //uses height of button seven to set the font to half the button container
 const buttonHeight = seven.offsetHeight;
