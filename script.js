@@ -60,6 +60,7 @@ let operatorSymbol = "";
 let displayText = "";
 let superText = "";
 let box = "";
+let temp = "";
 
 //#region number event listeners
 zero.addEventListener('click', e => {
@@ -206,16 +207,30 @@ nine.addEventListener('click', e => {
 
 //#region operators event listeners
 addButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "add";
     operatorSymbol = "+";
     displayText = firstNumber + operatorSymbol;
     displayBox.textContent = displayText;
     }
+  
+
 });
 
 subtractButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "subtract";
     operatorSymbol = "\u2212"
     displayText = firstNumber + operatorSymbol;
@@ -224,7 +239,13 @@ subtractButton.addEventListener('click', e => {
 });
 
 muliplyButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "multiply";
     operatorSymbol = "\u00D7";
     displayText = firstNumber + operatorSymbol;
@@ -233,7 +254,13 @@ muliplyButton.addEventListener('click', e => {
 });
 
 divideButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "divide";
     operatorSymbol = "\u00F7";
     displayText = firstNumber + operatorSymbol;
@@ -242,17 +269,29 @@ divideButton.addEventListener('click', e => {
 });
 
 powerButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "power";
     operatorSymbol = "\u2610";
     box = document.createElement("sup");
-    displayBox.appendChild(box)
+    displayBox.appendChild(box);
     box.textContent = operatorSymbol;
     }
 });
 
 squarerootButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "") {
+    if (operator == "" && firstNumber !== "" || result !== "") {
+        if (result !=="") {
+            firstNumber = result;
+            result = "";
+            secondNumber = "";
+            superBox.textContent = "";
+        }
     operator = "squareroot";
     operatorSymbol = "\u221A";
     displayText = operatorSymbol + "" + firstNumber + "";
@@ -295,27 +334,31 @@ backButton.addEventListener('click', e => {
     }
 });
 
+
+
 //#endregion
 
 equalsButton.addEventListener('click', e => {
  if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
-    superBox.textContent = firstNumber + operatorSymbol + secondNumber + "="
+    if (result !== "") temp = result;
+    else temp = firstNumber;
+    superBox.textContent = temp + operatorSymbol + secondNumber + "="
         if (operator == "add") {
-            result = add(firstNumber, secondNumber);
+            result = add(temp, secondNumber);
         }   
         if (operator == "subtract") {
-            result = subtract(firstNumber, secondNumber);
+            result = subtract(temp, secondNumber);
         }
         if (operator == "multiply") {
-            result = multiply(firstNumber, secondNumber);
+            result = multiply(temp, secondNumber);
         }
         if (operator == "divide") {
-            result = divide(firstNumber, secondNumber);
+            result = divide(temp, secondNumber);
         }
         if (operator == "power") {
-            result = power(firstNumber, secondNumber);
+            result = power(temp, secondNumber);
             superBox.textContent = "";
-            const first = document.createTextNode(firstNumber);
+            const first = document.createTextNode(temp);
             const second = document.createTextNode("=");
             const metasuper = document.createElement("sup");
             metasuper.textContent = secondNumber;
@@ -324,11 +367,15 @@ equalsButton.addEventListener('click', e => {
             superBox.appendChild(second);
         } 
         displayBox.textContent = result;
+        
  }
-if (firstNumber !== "" && operator == "squareroot") {
- result = squareroot(firstNumber);
- displayText = result;
- displayBox.textContent = displayText;
- superBox.textContent = operatorSymbol + firstNumber + "=";
-}
+ if (firstNumber !== "" && operator == "squareroot") {
+    result = squareroot(firstNumber);
+    displayText = result;
+    displayBox.textContent = displayText;
+    superBox.textContent = operatorSymbol + firstNumber + "=";
+    }
+ if (result !== "") {
+
+ }
 });
