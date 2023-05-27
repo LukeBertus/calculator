@@ -395,6 +395,10 @@ equalsButton.addEventListener('click', e => {
             superBox.appendChild(second);
         } 
         displayBox.textContent = round(result);
+ if (operator == "divide" && secondNumber == 0) {
+    displayBox.textContent = "Twat"
+    superBox.textContent = ""
+ }
         
  }
  if (operator == "squareroot") {
