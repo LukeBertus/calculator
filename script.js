@@ -2,7 +2,6 @@
 const title = document.querySelector("#title");
 const calculator = document.querySelector("#calculator");
 const display = document.querySelector("#display");
-/*const superBox = document.querySelector("#superBox");*/
 const buttons = document.querySelectorAll(".buttons")
 const numbers = document.querySelectorAll(".numbers")
 const operators = document.querySelectorAll(".operators")
@@ -27,7 +26,7 @@ const nine = document.querySelector("#nine");
 // #endregion
 
 //#region aspect ratios
-//sets calculator to 7:10 ratio
+//sets calculator to 61:100 ratio
 const  calculatorHeight = calculator.offsetHeight;
 calculator.style.cssText = `width: ${0.61*calculatorHeight}px`;
 
@@ -40,7 +39,7 @@ title.style.cssText = `margin: ${0.02*calculatorHeight}px; font-size: ${0.09*cal
 display.style.cssText = `padding: 0px ${0.015*calculatorHeight}px; font-size: ${0.12*calculatorHeight}px`;
 
 // #region Computations
-add = (a, b) => {return(a+b)};
+add = (a, b) => {return(parseInt(a)+parseInt(b))};
 subtract = (a, b) => {return(a-b)};
 multiply = (a, b) => {return(a*b)};
 divide = (a, b) => {return(a/b)};
@@ -48,12 +47,75 @@ squareroot = (a) => {return(Math.sqrt(a))};
 power = (a, b) => {return(a**b)};
 // #endregion
 
-operate = (a, operator, b) => {
-    return(operator(a, b));
+solve = (a, operate, b) => {
+    return(operate(a, b));
 }
 
-let displayText = "8543256";
-let superText = "4/2=";
-displayBox.textContent = displayText;
-superBox.textContent = superText;
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+let result = "";
+let operatorSymbol = "";
+let displayText = "";
+let superText = "";
 
+
+//#region number event listeners
+zero.addEventListener(`click`, e => {
+    if (operator == "" && firstNumber.length<6) {
+        firstNumber += "0"
+        displayBox.textContent = firstNumber;
+    }
+    else if (operator !== "" && secondNumber.length<6) {
+        secondNumber += "0"
+        displayBox.textContent = secondNumber;
+    }
+});
+
+one.addEventListener(`click`, e => {
+    if (operator == "" && firstNumber.length<6) {
+        firstNumber += "1"
+        displayBox.textContent = firstNumber;
+    }
+    else if (operator !== "" && secondNumber.length<6) {
+        secondNumber += "1"
+        displayBox.textContent = secondNumber;
+    }
+});
+
+  //#endregion
+
+  //#startregiong operators event listeners
+addButton.addEventListener('click', e => {
+    if (operator == "") {
+    operator = "add";
+    operatorSymbol = "+";
+    displayText = firstNumber + operatorSymbol;
+    displayBox.textContent = displayText;
+    }
+});
+
+equalsButton.addEventListener('click', e => {
+ if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        if (operator == "add") {
+            result = add(firstNumber, secondNumber);
+        }   
+        if (operator == "subtract") {
+            result = subtract(firstNumber, secondNumber);
+        }
+        if (operator == "multiply") {
+            result = multiply(firstNumber, secondNumber);
+        }
+        if (operator == "divide") {
+            result = divide(firstNumber, secondNumber);
+        }
+        if (operator == "squareroot") {
+            result = squareroot(firstNumber, secondNumber);
+        }
+        if (operator == "power") {
+            result = power(firstNumber, secondNumber);
+        }
+    displayText = result
+    displayBox.textContent = displayText;
+ }
+});
