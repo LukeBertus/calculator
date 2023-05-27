@@ -238,7 +238,7 @@ addButton.addEventListener('click', e => {
         }
     operator = "add";
     operatorSymbol = "+";
-    displayText = firstNumber + operatorSymbol;
+    displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
     }
   
@@ -256,7 +256,7 @@ subtractButton.addEventListener('click', e => {
         }
     operator = "subtract";
     operatorSymbol = "\u2212"
-    displayText = firstNumber + operatorSymbol;
+    displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
     }
 });
@@ -272,7 +272,7 @@ muliplyButton.addEventListener('click', e => {
         }
     operator = "multiply";
     operatorSymbol = "\u00D7";
-    displayText = firstNumber + operatorSymbol;
+    displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
     }
 });
@@ -288,7 +288,7 @@ divideButton.addEventListener('click', e => {
         }
     operator = "divide";
     operatorSymbol = "\u00F7";
-    displayText = firstNumber + operatorSymbol;
+    displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
     }
 });
@@ -320,7 +320,7 @@ squarerootButton.addEventListener('click', e => {
         }
     operator = "squareroot";
     operatorSymbol = "\u221A";
-    displayText = operatorSymbol + "" + firstNumber + "";
+    displayText = operatorSymbol + "" + round(firstNumber) + "";
     displayBox.textContent = displayText;
     }
 });
