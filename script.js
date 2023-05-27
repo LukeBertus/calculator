@@ -36,13 +36,14 @@ calculator.style.cssText = `width: ${0.61*calculatorHeight}px`;
 //uses height of button seven to set the font to half the button container
 const buttonHeight = seven.offsetHeight;
 buttons.forEach(e => e.style.fontSize = `${buttonHeight/2}px`);
-//#endregion
+
 
 title.style.cssText = `margin: ${0.02*calculatorHeight}px; font-size: ${0.09*calculatorHeight}px`;
 display.style.cssText = `padding: 0px ${0.015*calculatorHeight}px; font-size: ${0.12*calculatorHeight}px`;
+//#endregion
 
 // #region Computations
-add = (a, b) => {return(parseInt(a)+parseInt(b))};
+add = (a, b) => {return(parseFloat(a)+parseFloat(b))};
 subtract = (a, b) => {return(a-b)};
 multiply = (a, b) => {return(a*b)};
 divide = (a, b) => {return(a/b)};
@@ -61,6 +62,7 @@ let displayText = "";
 let superText = "";
 let box = "";
 let temp = "";
+let decimalCount = 0;
 
 //#region number event listeners
 zero.addEventListener('click', e => {
@@ -208,6 +210,8 @@ nine.addEventListener('click', e => {
 //#region operators event listeners
 addButton.addEventListener('click', e => {
     if (operator == "" && firstNumber !== "" || result !== "") {
+        decimalCount--;
+        parseFloat(firstNumber);
         if (result !=="") {
             firstNumber = result;
             result = "";
@@ -225,6 +229,7 @@ addButton.addEventListener('click', e => {
 
 subtractButton.addEventListener('click', e => {
     if (operator == "" && firstNumber !== "" || result !== "") {
+        decimalCount--;
         if (result !=="") {
             firstNumber = result;
             result = "";
@@ -240,6 +245,7 @@ subtractButton.addEventListener('click', e => {
 
 muliplyButton.addEventListener('click', e => {
     if (operator == "" && firstNumber !== "" || result !== "") {
+        decimalCount--;
         if (result !=="") {
             firstNumber = result;
             result = "";
@@ -255,6 +261,7 @@ muliplyButton.addEventListener('click', e => {
 
 divideButton.addEventListener('click', e => {
     if (operator == "" && firstNumber !== "" || result !== "") {
+        decimalCount--;
         if (result !=="") {
             firstNumber = result;
             result = "";
@@ -270,6 +277,7 @@ divideButton.addEventListener('click', e => {
 
 powerButton.addEventListener('click', e => {
     if (operator == "" && firstNumber !== "" || result !== "") {
+        decimalCount--;
         if (result !=="") {
             firstNumber = result;
             result = "";
@@ -298,6 +306,9 @@ squarerootButton.addEventListener('click', e => {
     displayBox.textContent = displayText;
     }
 });
+//#endregion
+
+//#start region bottom row event listeners
 
 acButton.addEventListener('click', e => {
     firstNumber = "";
@@ -307,7 +318,7 @@ acButton.addEventListener('click', e => {
     displayText = "";
     displayBox.textContent = "";
     superBox.textContent = "";
-
+    decimalCount = 0;
 })
 
 backButton.addEventListener('click', e => {
@@ -336,7 +347,6 @@ backButton.addEventListener('click', e => {
 
 
 
-//#endregion
 
 equalsButton.addEventListener('click', e => {
  if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
@@ -369,7 +379,7 @@ equalsButton.addEventListener('click', e => {
         displayBox.textContent = result;
         
  }
- if (firstNumber !== "" && operator == "squareroot") {
+ if (operator == "squareroot") {
     result = squareroot(firstNumber);
     displayText = result;
     displayBox.textContent = displayText;
@@ -379,3 +389,18 @@ equalsButton.addEventListener('click', e => {
 
  }
 });
+
+decimalButton.addEventListener('click', e => {
+    if (operator == "" && decimalCount == 0) {
+        firstNumber += ".";
+        decimalCount++;
+        displayBox.textContent = firstNumber;
+        console.log(firstNumber)
+    }
+    if (operator !== "" && decimalCount ==0) {
+        secondNumber += ".";
+        decimalCount++;
+        displayBox.textContent = secondNumber;
+
+    }
+})
