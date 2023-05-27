@@ -13,6 +13,8 @@ const powerButton = document.querySelector("#power")
 const squarerootButton = document.querySelector("#squareroot")
 const acButton = document.querySelector("#ac")
 const equalsButton = document.querySelector("#equals")
+const backButton = document.querySelector('#back')
+const decimalButton = document.querySelector('#decimal')
 
 const zero = document.querySelector("#zero");
 const one = document.querySelector("#one");
@@ -48,9 +50,7 @@ squareroot = (a) => {return(Math.sqrt(a))};
 power = (a, b) => {return(a**b)};
 // #endregion
 
-solve = (a, operate, b) => {
-    return(operate(a, b));
-}
+
 
 let firstNumber = "";
 let secondNumber = "";
@@ -71,7 +71,7 @@ zero.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (secondNumber.length < 6) {
         secondNumber += "0";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -85,7 +85,7 @@ one.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "1";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -99,7 +99,7 @@ two.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "2";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -113,7 +113,7 @@ three.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "3";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -127,7 +127,7 @@ four.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "4";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -141,7 +141,7 @@ five.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "5";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -155,7 +155,7 @@ six.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "6";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -169,7 +169,7 @@ seven.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "7";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -183,7 +183,7 @@ eight.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "8";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -197,7 +197,7 @@ nine.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6) {
         secondNumber += "9";
-        superBox.textContent = displayBox.textContent;
+        superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
     }
 });
@@ -270,6 +270,30 @@ acButton.addEventListener('click', e => {
     superBox.textContent = "";
 
 })
+
+backButton.addEventListener('click', e => {
+    if (operator == "" && secondNumber == "") {
+        let temp = firstNumber.toString();
+        firstNumber = temp.slice(0, -1);
+        displayBox.textContent = firstNumber;
+    }
+    else if (operator !== "" && secondNumber == "") {
+        operator = "";
+        operatorSymbol = "";
+        displayBox.textContent = firstNumber;
+        superBox.textContent = "";
+    }
+    else if (operator !== "" && secondNumber !== "" && result == "") {
+        let temp = secondNumber.toString();
+        secondNumber = temp.slice(0, -1);
+        displayBox.textContent = secondNumber;
+    }
+    else if (result !== "") {
+        result = "";
+        displayBox.textContent = secondNumber;
+        superBox.textContent = firstNumber + operatorSymbol;
+    }
+});
 
 //#endregion
 
