@@ -51,6 +51,24 @@ squareroot = (a) => {return(Math.sqrt(a))};
 power = (a, b) => {return(a**b)};
 // #endregion
 
+round = num => {
+    if (num<999999 && num>-999999 && num.toString().length>6) {
+        let array = num.toString().split("");
+        if (array.includes(".")) {
+            let pos = array.indexOf(".")
+            let rounded = Number(num.toFixed(6-pos))
+            return(rounded);
+        }
+            
+    }
+    else if (num>999999 || num<-999999) return(num.toExponential(0));
+    else return(num)
+    
+}
+
+console.log(round(2457498327))
+
+
 
 
 let firstNumber = "";
@@ -72,7 +90,7 @@ zero.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "0";
         box.textContent = secondNumber;
-    } else if (secondNumber.length < 6) {
+    } else if (secondNumber.length < 6 && result == "") {
         secondNumber += "0";
         superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -86,7 +104,7 @@ one.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "1";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "1";
         superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -100,7 +118,7 @@ two.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "2";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "2";
         superBox.textContent = firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -114,7 +132,7 @@ three.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "3";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "3";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -128,7 +146,7 @@ four.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "4";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "4";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -142,7 +160,7 @@ five.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "5";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "5";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -156,7 +174,7 @@ six.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "6";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "6";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -170,7 +188,7 @@ seven.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "7";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "7";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -184,7 +202,7 @@ eight.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "8";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "8";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -198,7 +216,7 @@ nine.addEventListener('click', e => {
     } else if (operator == "power") {
         secondNumber += "9";
         box.textContent = secondNumber;
-    } else if (operator !== "" && secondNumber.length < 6) {
+    } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "9";
         superBox.textContent =  firstNumber + operatorSymbol 
         displayBox.textContent = secondNumber;
@@ -308,7 +326,7 @@ squarerootButton.addEventListener('click', e => {
 });
 //#endregion
 
-//#start region bottom row event listeners
+//#region bottom row event listeners
 
 acButton.addEventListener('click', e => {
     firstNumber = "";
@@ -352,7 +370,7 @@ equalsButton.addEventListener('click', e => {
  if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
     if (result !== "") temp = result;
     else temp = firstNumber;
-    superBox.textContent = temp + operatorSymbol + secondNumber + "="
+    superBox.textContent = round(temp) + operatorSymbol + secondNumber + "="
         if (operator == "add") {
             result = add(temp, secondNumber);
         }   
@@ -368,7 +386,7 @@ equalsButton.addEventListener('click', e => {
         if (operator == "power") {
             result = power(temp, secondNumber);
             superBox.textContent = "";
-            const first = document.createTextNode(temp);
+            const first = document.createTextNode(round(temp));
             const second = document.createTextNode("=");
             const metasuper = document.createElement("sup");
             metasuper.textContent = secondNumber;
@@ -376,14 +394,17 @@ equalsButton.addEventListener('click', e => {
             superBox.appendChild(metasuper);
             superBox.appendChild(second);
         } 
-        displayBox.textContent = result;
+        displayBox.textContent = round(result);
         
  }
  if (operator == "squareroot") {
-    result = squareroot(firstNumber);
-    displayText = result;
+    if (result !== "") temp = result;
+    else temp = firstNumber;
+    result = squareroot(temp);
+    console.log(temp)
+    displayText = round(result);
     displayBox.textContent = displayText;
-    superBox.textContent = operatorSymbol + firstNumber + "=";
+    superBox.textContent = operatorSymbol + round(temp) + "=";
     }
  if (result !== "") {
 
@@ -404,3 +425,4 @@ decimalButton.addEventListener('click', e => {
 
     }
 })
+//#endregion
