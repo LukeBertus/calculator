@@ -2,6 +2,7 @@
 const title = document.querySelector("#title");
 const calculator = document.querySelector("#calculator");
 const display = document.querySelector("#display");
+/*const superBox = document.querySelector("#superBox");*/
 const buttons = document.querySelectorAll(".buttons")
 const numbers = document.querySelectorAll(".numbers")
 const operators = document.querySelectorAll(".operators")
@@ -35,7 +36,8 @@ const buttonHeight = seven.offsetHeight;
 buttons.forEach(e => e.style.fontSize = `${buttonHeight/2}px`);
 //#endregion
 
-title.style.cssText = `margin: ${0.02*calculatorHeight}px; font-size: ${0.1*calculatorHeight}px`;
+title.style.cssText = `margin: ${0.02*calculatorHeight}px; font-size: ${0.09*calculatorHeight}px`;
+display.style.cssText = `padding: 0px ${0.015*calculatorHeight}px; font-size: ${0.12*calculatorHeight}px`;
 
 // #region Computations
 add = (a, b) => {return(a+b)};
@@ -46,4 +48,12 @@ squareroot = (a) => {return(Math.sqrt(a))};
 power = (a, b) => {return(a**b)};
 // #endregion
 
-console.log(power(10,3))
+operate = (a, operator, b) => {
+    return(operator(a, b));
+}
+
+let displayText = "8543256";
+let superText = "4/2=";
+displayBox.textContent = displayText;
+superBox.textContent = superText;
+
