@@ -66,7 +66,7 @@ round = num => {
     
 }
 
-console.log(round(2457498327))
+
 
 
 
@@ -84,6 +84,7 @@ let decimalCount = 0;
 
 //#region number event listeners
 zero.addEventListener('click', e => {
+    event.preventDefault()
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "0";
         displayBox.textContent = firstNumber;
@@ -227,7 +228,11 @@ nine.addEventListener('click', e => {
 
 //#region operators event listeners
 addButton.addEventListener('click', e => {
-    if (operator == "" && firstNumber !== "" || result !== "") {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
+    if (firstNumber !== "") {
         decimalCount--;
         parseFloat(firstNumber);
         if (result !=="") {
@@ -240,12 +245,16 @@ addButton.addEventListener('click', e => {
     operatorSymbol = "+";
     displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
-    }
+}
   
 
 });
 
 subtractButton.addEventListener('click', e => {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
     if (operator == "" && firstNumber !== "" || result !== "") {
         decimalCount--;
         if (result !=="") {
@@ -262,6 +271,10 @@ subtractButton.addEventListener('click', e => {
 });
 
 muliplyButton.addEventListener('click', e => {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
     if (operator == "" && firstNumber !== "" || result !== "") {
         decimalCount--;
         if (result !=="") {
@@ -278,6 +291,10 @@ muliplyButton.addEventListener('click', e => {
 });
 
 divideButton.addEventListener('click', e => {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
     if (operator == "" && firstNumber !== "" || result !== "") {
         decimalCount--;
         if (result !=="") {
@@ -294,6 +311,10 @@ divideButton.addEventListener('click', e => {
 });
 
 powerButton.addEventListener('click', e => {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
     if (operator == "" && firstNumber !== "" || result !== "") {
         decimalCount--;
         if (result !=="") {
@@ -311,6 +332,10 @@ powerButton.addEventListener('click', e => {
 });
 
 squarerootButton.addEventListener('click', e => {
+    if (secondNumber !== 0) {
+        const clickEvent = new Event('click');
+        equalsButton.dispatchEvent(clickEvent);
+        }
     if (operator == "" && firstNumber !== "" || result !== "") {
         if (result !=="") {
             firstNumber = result;
@@ -336,6 +361,8 @@ acButton.addEventListener('click', e => {
     displayText = "";
     displayBox.textContent = "";
     superBox.textContent = "";
+    temp = "";
+    result = "";
     decimalCount = 0;
 })
 

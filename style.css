@@ -81,15 +81,26 @@ sup {
     justify-content: center;
     /*font-size: 2rem;*/
     font-family :Verdana, Geneva, Tahoma, sans-serif;
+    cursor: default;
 }
 
 .numbers {
     background-color: rgb(33, 33, 33);
     color: white;
+    transition: all 0.3s ease;
+}
+.numbers:hover{
+    color: rgb(33, 33, 33);
+    background-color: white;
 }
 
 .operators {
     background-color: rgba(248, 114, 4, 0.93);
+    transition: all 0.3s ease;
+}
+.operators:hover {
+    color: rgba(248, 114, 4, 0.93);
+    background-color: black;
 }
 
 #power {
@@ -99,6 +110,22 @@ sup {
 #decimal,
 #back{
     background-color: rgba(35, 107, 214, 0.915);
+    transition: all 0.3s ease;
 }
 
-#equals {background-color: rgba(220, 19, 19, 0.868);}
+#ac:hover,
+#decimal:hover,
+#back:hover {
+    color: rgba(35, 107, 214, 0.915);
+    background-color: white;
+}
+
+#equals {
+    background-color: rgba(220, 19, 19, 0.868);
+    transition: all 0.3s ease;
+}
+
+#equals:hover{
+    color: rgba(220, 19, 19, 0.868);
+    background-color: white;
+}
