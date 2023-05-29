@@ -55,14 +55,14 @@ round = num => {
     if (num<999999 && num>-999999 && num.toString().length>6) {
         let array = num.toString().split("");
         if (array.includes(".")) {
-            let pos = array.indexOf(".")
-            let rounded = Number(num.toFixed(6-pos))
+            let pos = array.indexOf(".");
+            let rounded = Number(num.toFixed(6-pos));
             return(rounded);
         }
             
     }
     else if (num>999999 || num<-999999) return(num.toExponential(0));
-    else return(num)
+    else return(num);
     
 }
 
@@ -84,7 +84,6 @@ let decimalCount = 0;
 
 //#region number event listeners
 zero.addEventListener('click', e => {
-    event.preventDefault()
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "0";
         displayBox.textContent = firstNumber;
@@ -93,7 +92,7 @@ zero.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (secondNumber.length < 6 && result == "") {
         secondNumber += "0";
-        superBox.textContent = firstNumber + operatorSymbol 
+        superBox.textContent = firstNumber + operatorSymbol;
         displayBox.textContent = secondNumber;
     }
 });
@@ -107,7 +106,7 @@ one.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "1";
-        superBox.textContent = firstNumber + operatorSymbol 
+        superBox.textContent = firstNumber + operatorSymbol;
         displayBox.textContent = secondNumber;
     }
 });
@@ -121,7 +120,7 @@ two.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "2";
-        superBox.textContent = firstNumber + operatorSymbol 
+        superBox.textContent = firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -135,7 +134,7 @@ three.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "3";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -149,7 +148,7 @@ four.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "4";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -163,7 +162,7 @@ five.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "5";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -177,7 +176,7 @@ six.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "6";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -191,7 +190,7 @@ seven.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "7";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -205,7 +204,7 @@ eight.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "8";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -219,7 +218,7 @@ nine.addEventListener('click', e => {
         box.textContent = secondNumber;
     } else if (operator !== "" && secondNumber.length < 6 && result == "") {
         secondNumber += "9";
-        superBox.textContent =  firstNumber + operatorSymbol 
+        superBox.textContent =  firstNumber + operatorSymbol; 
         displayBox.textContent = secondNumber;
     }
 });
@@ -423,8 +422,8 @@ equalsButton.addEventListener('click', e => {
         } 
         displayBox.textContent = round(result);
  if (operator == "divide" && secondNumber == 0) {
-    displayBox.textContent = "Twat"
-    superBox.textContent = ""
+    displayBox.textContent = "Twat";
+    superBox.textContent = "";
  }
         
  }
@@ -432,7 +431,6 @@ equalsButton.addEventListener('click', e => {
     if (result !== "") temp = result;
     else temp = firstNumber;
     result = squareroot(temp);
-    console.log(temp)
     displayText = round(result);
     displayBox.textContent = displayText;
     superBox.textContent = operatorSymbol + round(temp) + "=";
@@ -447,7 +445,6 @@ decimalButton.addEventListener('click', e => {
         firstNumber += ".";
         decimalCount++;
         displayBox.textContent = firstNumber;
-        console.log(firstNumber)
     }
     if (operator !== "" && decimalCount ==0) {
         secondNumber += ".";
