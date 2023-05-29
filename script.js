@@ -84,6 +84,10 @@ let decimalCount = 0;
 
 //#region number event listeners
 zero.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "0";
         displayBox.textContent = firstNumber;
@@ -98,6 +102,10 @@ zero.addEventListener('click', e => {
 });
 
 one.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "1";
         displayBox.textContent = firstNumber;
@@ -112,7 +120,14 @@ one.addEventListener('click', e => {
 });
 
 two.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
+        result = "";
+        temp = "";
+        superBox.textContent = "";
         firstNumber += "2";
         displayBox.textContent = firstNumber;
     } else if (operator == "power") {
@@ -126,6 +141,10 @@ two.addEventListener('click', e => {
 });
 
 three.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "3";
         displayBox.textContent = firstNumber;
@@ -140,6 +159,10 @@ three.addEventListener('click', e => {
 });
 
 four.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "4";
         displayBox.textContent = firstNumber;
@@ -154,6 +177,10 @@ four.addEventListener('click', e => {
 });
 
 five.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "5";
         displayBox.textContent = firstNumber;
@@ -168,6 +195,10 @@ five.addEventListener('click', e => {
 });
 
 six.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "6";
         displayBox.textContent = firstNumber;
@@ -182,6 +213,10 @@ six.addEventListener('click', e => {
 });
 
 seven.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "7";
         displayBox.textContent = firstNumber;
@@ -196,6 +231,10 @@ seven.addEventListener('click', e => {
 });
 
 eight.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "8";
         displayBox.textContent = firstNumber;
@@ -210,6 +249,10 @@ eight.addEventListener('click', e => {
 });
 
 nine.addEventListener('click', e => {
+    if (firstNumber !== "" && operator !== "" && secondNumber !== "") {
+        const clickEvent = new Event('click');
+        acButton.dispatchEvent(clickEvent);
+    }
     if (operator == "" && firstNumber.length < 6) {
         firstNumber += "9";
         displayBox.textContent = firstNumber;
@@ -227,7 +270,7 @@ nine.addEventListener('click', e => {
 
 //#region operators event listeners
 addButton.addEventListener('click', e => {
-    if (secondNumber !== 0) {
+    if (secondNumber !== 0 && result == "") {
         const clickEvent = new Event('click');
         equalsButton.dispatchEvent(clickEvent);
         }
@@ -242,6 +285,7 @@ addButton.addEventListener('click', e => {
         }
     operator = "add";
     operatorSymbol = "+";
+    console.log(operator);
     displayText = round(firstNumber) + operatorSymbol;
     displayBox.textContent = displayText;
 }
@@ -425,7 +469,8 @@ equalsButton.addEventListener('click', e => {
     displayBox.textContent = "Twat";
     superBox.textContent = "";
  }
-        
+
+ 
  }
  if (operator == "squareroot") {
     if (result !== "") temp = result;
@@ -435,9 +480,7 @@ equalsButton.addEventListener('click', e => {
     displayBox.textContent = displayText;
     superBox.textContent = operatorSymbol + round(temp) + "=";
     }
- if (result !== "") {
 
- }
 });
 
 decimalButton.addEventListener('click', e => {
